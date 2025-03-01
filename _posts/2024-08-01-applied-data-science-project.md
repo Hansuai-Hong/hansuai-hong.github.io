@@ -156,19 +156,65 @@ We utilize word clouds to represent the pros and cons of Sephora products based 
 
 
 
-### 6) Objective II - Random Forest: A traditional machine learning model
+### 6) Objective II - Sentiment Prediction (Random Forest Model)
+
+To develop an effective sentiment prediction model, I implemented a Random Forest classifier using TF-IDF for feature extraction. The key steps involved in this process are as follows:
+
+I applied the TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer To transform text reviews into numerical features, selecting the top 5,000 features:
+
+       vectorizer_tfidf = TfidfVectorizer(max_features=5000)
+       X_train_tfidf = vectorizer_tfidf.fit_transform(X_train)
+       X_test_tfidf = vectorizer_tfidf.transform(X_test)
+
+To generate the model, i splited the data set to 80 train / 20 test and trained a Random Forest classifier with 100 decision trees and a fixed random state for reproducibility:
+
+      rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+      rf_model.fit(X_train_tfidf, y_train)
+
+The model was evaluated using accuracy, classification report, and a confusion matrix with visualiazation tools. also, the top 20most improtact features based on model's feature importance socred was displayed.
+
+      y_pred = rf_model.predict(X_test_tfidf)
+      accuracy = accuracy_score(y_test, y_pred)
+      print(f"Accuracy: {accuracy:.4f}")
+      print(classification_report(y_test, y_pred))
+
+This is the initial models.
+
+However, Upon evaluating the model, I observed a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
+
+To improve model performance, I implemented the following adjustments:
+Balancing the dataset: Since positive reviews outnumbered negative reviews, I duplicated negative remarks based on statistical guidelines until both classes had an equal number of samples.
+Incresae the tree: Since number of tree is impacting the accuracy, I incerase to 200 for a better accuracy.
+Retraining the model: After balancing the dataset and increase the tree, I retrained the Random Forest classifier, which improved its ability to differentiate between positive and negative sentiment.
+
+These refinements enhanced the model’s predictive accuracy and reduced misclassification of negative reviews as positive.
+the final results shows 95% accuracy which it is consier a good models now.
+
+
+
+### 7) Objective II - Sentiment Prediction (RECURRENT NEURAL NETWORKS)
+
+To enhance sentiment prediction, I implemented a 2nd model - Recurrent Neural Network (RNN), which is well-suited for analyzing sequential text data. 
+Below is the steps to create the models:
+1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.
+2) # Split into training & validation sets
+Model Architecture: Implementing an RNN-based model using LSTM (Long Short-Term Memory) or GRU (Gated Recurrent Unit) layers to capture contextual meaning.
+Training & Optimization: Using categorical cross-entropy loss and an Adam optimizer to train the model.
+2. Model Evaluation
+The RNN model was evaluated using:
+
+Accuracy Score: To measure overall prediction performance.
+Confusion Matrix: To analyze the distribution of correct and incorrect predictions.
+Loss & Accuracy Plots: To monitor training performance and detect overfitting.
+3. Challenges & Improvements
+Overfitting Prevention: Applied techniques such as dropout regularization and early stopping to improve generalization.
+Computational Cost: Optimized model parameters to improve training efficiency.
+Comparison with Random Forest: Compared results with the previously trained Random Forest model to determine the best approach for sentiment classification.
+The RNN model provided deeper contextual insights compared to traditional machine learning models, making it a valuable addition to sentiment analysis.
 
 
 
 
-
-
-
-### Modelling
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.
-
-### Evaluation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.
 
 ## Recommendation and Analysis
 Explain the analysis and recommendations
