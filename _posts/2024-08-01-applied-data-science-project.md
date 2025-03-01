@@ -24,7 +24,7 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 
 ## Personal Objective
-<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/1.png" alt="Description" width="500" height="300">
+<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/1.png" alt="Description" width="400" height="300">
 Objective
 
 The sentiment analysis in this project aims to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
@@ -61,7 +61,19 @@ This preliminary analysis helped ensure that the dataset was well-prepared for s
    
 
 ### 1) Data Cleaning
-As part of my role, I shortlisted 3 key paramters - Product ID, Rating, and Text review as my primary parameters. Then i start the prework by conducted a thorough data cleaning process to ensure the dataset was accurate and ready for analysis. The key tasks completed include:
+As part of my role, I shortlisted 3 key paramters - Product ID, Rating, and Text review as my primary parameters. 
+Before start, simple EDA performed to understand my data set with key parameters. 
+overall rating:
+
+<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/2.png" alt="Description" width="400" height="300">
+
+Positive reivew (rating4 and rating 5) vs negative review (rating1, rating2, and rating3)
+
+df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
+
+<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
+
+Then i start the prework by conducted a thorough data cleaning process to ensure the dataset was accurate and ready for analysis. The key tasks completed include:
 
 - Removing duplicate entries to prevent redundancy in the dataset.
 - Handling missing values by either imputing them or removing incomplete records.
