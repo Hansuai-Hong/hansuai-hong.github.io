@@ -41,9 +41,9 @@ Use word clouds to visually represent the pros and cons of Sephora products base
 
 2) Building a Sentiment Prediction Model
 Develop a machine learning model to predict sentiment based on customer reviews.
-     - two different approaches:
-Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.
-     - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.
+two different approaches:
+      - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.
+      - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.
 
 These objectives aim to provide Sephora with valuable insights into customer perceptions while enabling automated sentiment classification for future reviews.
 
@@ -136,13 +136,30 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
     # Display the input widget
     display(interactive_widget)
 
-### 5) Objective I - Understanding Customer Sentiment
+### 5) Objective I - Understanding Customer Sentiment with Key Insights
+We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
+
+    # calculate the number of occurence of each word in the entire list of words
+    all_words_frequency = FreqDist(all_words)
+    print (all_words_frequency)
+
+    # print 10 most frequently occurring words
+    print ("\nTop 50 most frequently occurring words")
+    print (all_words_frequency.most_common(50))
+This is the most common 50words used in the particular selected product:
+
+<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/6.png" alt="Description" width="400" height="300">
+
+To gain deeper insights, we categorize reviews into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, we can highlight the aspects of Sephora products that customers appreciate the most. Similarly, analyzing negative reviews allows us to pinpoint common complaints or areas where improvements may be needed.
 
 
 
-Analyze review text to identify the most common words used across all reviews.
-Determine the most frequently mentioned words in positive and negative reviews separately.
-Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
+We utilize word clouds to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer satisfaction and dissatisfaction. This approach helps us extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
+
+
+
+
+### 6) Objective II - Random Forest: A traditional machine learning model
 
 
 
