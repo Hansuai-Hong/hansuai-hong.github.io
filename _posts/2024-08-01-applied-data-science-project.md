@@ -75,11 +75,14 @@ negative review (rating1, rating2, and rating3)
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
 
-To ensure data accuracy and consistency, I performed the following cleaning tasks:
+To ensure data accuracy and consistency, I performed the following tasks for cleaning:
 - Removing missing values (which less than 1% of total data set)
 - Removing duplicate entries to prevent redundancy in the dataset.
+- Concert the submission time to datetime format
 
-- 
+<span style="color: green;">df_reviews1 = df_reviews.dropna(subset=['review_text'])/span>
+<span style="color: green;">df_reviews1['submission_time'] = pd.to_datetime(df_reviews1['submission_time'])/span>
+<span style="color: green;">df_reviews2 = df_reviews1.drop_duplicates()/span>
 
 
 
