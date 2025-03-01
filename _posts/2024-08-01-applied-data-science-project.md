@@ -15,13 +15,10 @@ This project is driven by 4 key objectives, each led by a dedicated team member:
 
 1) Sentiment Analysis –
    Analyze customer reviews, feedback, and social media sentiment to understand customer perceptions of Sephora’s products. This insight helps identify areas for improvement and enhance customer satisfaction.
-
 2) Customer Segmentation and Preference Analysis –
    Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.
-
 3) Develop a Product Recommendation System –
    Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.
-
 4) Price Optimization –
    Implement data-driven pricing models that consider demand patterns, competitor pricing, and customer willingness to pay, ensuring competitive yet profitable pricing strategies.
 
@@ -75,7 +72,7 @@ Overall Rating Distribution:
 Positive reivew (rating-4 and rating-5)
 negative review (rating-1, rating-2, and rating-3)
 
-    df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
+      df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
 
@@ -103,38 +100,38 @@ Lemmatization: Converting words to their root form for consistency.
 
 This step was crucial for optimizing the data for sentiment analysis and predictive modeling using machine learning techniques.
 
-        def clean_text(text):
-          # Check if text is NaN or empty, handle it to avoid errors
-          if isinstance(text, str):
-          # Lowercase the text
-          text = text.lower()
+      def clean_text(text):
+        # Check if text is NaN or empty, handle it to avoid errors
+        if isinstance(text, str):
+        # Lowercase the text
+        text = text.lower()
         
-          # Remove special characters and numbers, keeping spaces
-          text = re.sub(r'[^a-z\s]', '', text)
+        # Remove special characters and numbers, keeping spaces
+        text = re.sub(r'[^a-z\s]', '', text)
         
-          # Tokenize the text into words
-          words = nltk.word_tokenize(text)
+        # Tokenize the text into words
+        words = nltk.word_tokenize(text)
         
-          # Remove stopwords and words with length less than 3
-          stop_words = set(stopwords.words('english'))
-          words = [word for word in words if word not in stop_words and len(word) >= 3]
+        # Remove stopwords and words with length less than 3
+        stop_words = set(stopwords.words('english'))
+        words = [word for word in words if word not in stop_words and len(word) >= 3]
         
-          # Lemmatize each word in the list
-          lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
+        # Lemmatize each word in the list
+        lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
         
-          # Reconstruct the cleaned text from lemmatized words
-          text = ' '.join(lemmatized_words)
+        # Reconstruct the cleaned text from lemmatized words
+        text = ' '.join(lemmatized_words)
     
-        return text
+      return text
 
 ### 4) Filtering
 Since performing sentiment analysis on 1 million reviews across 800 products is too generic, I have implemented ipywidgets to allow users to filter results by Product ID. Once a specific product is selected, we can then analyze its reviews in detail.
 
-    # Create an interactive widget
-    interactive_widget = widgets.interactive(filter_reviews, product_id=product_input)
+      # Create an interactive widget
+      interactive_widget = widgets.interactive(filter_reviews, product_id=product_input)
 
-    # Display the input widget
-    display(interactive_widget)
+      # Display the input widget
+      display(interactive_widget)
 
 ### 5) Objective I - Understanding Customer Sentiment with Key Insights
 We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
