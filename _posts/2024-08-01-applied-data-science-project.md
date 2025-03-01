@@ -24,6 +24,7 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 
 ## Personal Objective
+<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/1.png" alt="Description" width="500" height="300">
 Objective
 
 The sentiment analysis in this project aims to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
@@ -59,10 +60,19 @@ After obtaining the dataset, we performed an initial Exploratory Data Analysis (
 This preliminary analysis helped ensure that the dataset was well-prepared for subsequent sentiment analysis and predictive modeling tasks.
    
 
-### 1) Data Collection (Grouop effort)
+### 1) Data Cleaning
+As part of my role, I shortlisted 3 key paramters - Product ID, Rating, and Text review as my primary parameters. Then i start the prework by conducted a thorough data cleaning process to ensure the dataset was accurate and ready for analysis. The key tasks completed include:
+
+- Removing duplicate entries to prevent redundancy in the dataset.
+- Handling missing values by either imputing them or removing incomplete records.
 
 
-Document your work done to accomplish the outcome
+
+Standardizing text formats by converting all text to lowercase for consistency.
+Eliminating irrelevant columns that do not contribute to sentiment analysis.
+This process improved data quality and prepared the dataset for further preprocessing and modeling.
+
+
 
 
 
