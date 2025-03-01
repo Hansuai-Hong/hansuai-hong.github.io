@@ -77,6 +77,7 @@ negative review (rating-1, rating-2, and rating-3)
 <img src="https://hansuai-hong.github.io/assets/3.png" alt="Description" width="400" height="300">
 
 Overall Review by products 7 zoom in to top 20 products:
+
 <img src="https://hansuai-hong.github.io/assets/4.png" alt="Description" width="400" height="300">  <img src="https://hansuai-hong.github.io/assets/5.png" alt="Description" width="400" height="300">
 
 
