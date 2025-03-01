@@ -26,7 +26,6 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 
 ## Personal Objective
-<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/1.png" alt="Description" width="400" height="300">
 <img src="https://hansuai-hong.github.io/assets/1.png" alt="Description" width="400" height="300">
 Objective
 
@@ -64,18 +63,22 @@ This preliminary analysis helped ensure that the dataset was well-prepared for s
    
 
 ### 1) Exploratory Data Analysis (EDA)
-As part of my role, I identified Product ID, Rating, and Text Review as the key parameters for sentiment analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
+To perform sentiment analysis, I had identified Product ID, Rating, and Text Review as my key parameters to analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
 
 Overall Rating Distribution:
 
-<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/2.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/2.png" alt="Description" width="400" height="300">
 
 Positive reivew (rating-4 and rating-5)
 negative review (rating-1, rating-2, and rating-3)
 
       df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
 
-<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/3.png" alt="Description" width="400" height="300">
+
+Overall Review by products 7 zoom in to top 20 products:
+<img src="https://hansuai-hong.github.io/assets/4.png" alt="Description" width="400" height="300">  <img src="https://hansuai-hong.github.io/assets/5.png" alt="Description" width="400" height="300">
+
 
 ### 2) Data Cleaning
 To ensure data accuracy and consistency, I performed the following tasks for cleaning:
