@@ -8,6 +8,7 @@ categories: ITD214
 The beauty industry is constantly evolving, with shifting consumer preferences, emerging market trends, and increasing competition. To maintain a strong market position, Sephora Products must leverage data-driven strategies to enhance customer experience and drive business growth.
 
 This project focuses on utilizing customer insights, product performance data, and market trends to gain a deeper understanding of customer behavior and industry dynamics. By analyzing purchasing patterns, customer feedback, and engagement metrics, Sephora can make informed decisions that improve product offerings, optimize marketing strategies, and refine pricing structures. A data-driven approach ensures the brand remains responsive to consumer demands while maximizing operational efficiency and profitability.
+![image](https://github.com/user-attachments/assets/30cd6596-a645-402e-bc02-ad617bcb0fa5)
 
 ## Group Objective
 This project is driven by 4 key objectives, each led by a dedicated team member:
@@ -61,23 +62,24 @@ This preliminary analysis helped ensure that the dataset was well-prepared for s
    
 
 ### 1) Data Cleaning
-As part of my role, I shortlisted 3 key paramters - Product ID, Rating, and Text review as my primary parameters. 
-Before start, simple EDA performed to understand my data set with key parameters. 
-overall rating:
+As part of my role, I identified Product ID, Rating, and Text Review as the key parameters for sentiment analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
+
+Overall Rating Distribution:
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/2.png" alt="Description" width="400" height="300">
 
-Positive reivew (rating4 and rating 5) vs negative review (rating1, rating2, and rating3)
+Positive reivew (rating4 and rating 5)
+negative review (rating1, rating2, and rating3)
 
-This is <span style="color: green;">green</span> text.
 <span style="color: green;">df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')/span>
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
 
-Then i start the prework by conducted a thorough data cleaning process to ensure the dataset was accurate and ready for analysis. The key tasks completed include:
-
+To ensure data accuracy and consistency, I performed the following cleaning tasks:
+- Removing missing values (which less than 1% of total data set)
 - Removing duplicate entries to prevent redundancy in the dataset.
-- Handling missing values by either imputing them or removing incomplete records.
+
+- 
 
 
 
