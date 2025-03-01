@@ -65,42 +65,90 @@ After obtaining the dataset, we performed an initial Exploratory Data Analysis (
 This preliminary analysis helped ensure that the dataset was well-prepared for subsequent sentiment analysis and predictive modeling tasks.
    
 
-### 1) Data Cleaning
+### 1) Exploratory Data Analysis (EDA)
 As part of my role, I identified Product ID, Rating, and Text Review as the key parameters for sentiment analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
 
 Overall Rating Distribution:
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/2.png" alt="Description" width="400" height="300">
 
-Positive reivew (rating4 and rating 5)
-negative review (rating1, rating2, and rating3)
+Positive reivew (rating-4 and rating-5)
+negative review (rating-1, rating-2, and rating-3)
 
-<span style="color: green;">df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')/span>
+    df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
 
+### 2) Data Cleaning
 To ensure data accuracy and consistency, I performed the following tasks for cleaning:
 - Removing missing values (which less than 1% of total data set)
 - Removing duplicate entries to prevent redundancy in the dataset.
-- Concert the submission time to datetime format
+- Convert the submission time to datetime format
+- Eliminate irrelevant columns that do not contribute to sentiment analysis.
+ 
+      df_reviews1 = df_reviews.dropna(subset=['review_text'])
+      df_reviews1['submission_time'] = pd.to_datetime(df_reviews1['submission_time'])
+      df_reviews2 = df_reviews1.drop_duplicates()
+      df_reviews3 = df_reviews2[['review_text' ,'rating', 'product_id']
+       
 
-<span style="color: green;">df_reviews1 = df_reviews.dropna(subset=['review_text'])/span>
-<span style="color: green;">df_reviews1['submission_time'] = pd.to_datetime(df_reviews1['submission_time'])/span>
-<span style="color: green;">df_reviews2 = df_reviews1.drop_duplicates()/span>
-
-
+### 3) Data preprocessing
+after data is cleaned, I performed several preprocessing steps, including:
 
 Standardizing text formats by converting all text to lowercase for consistency.
-Eliminating irrelevant columns that do not contribute to sentiment analysis.
-This process improved data quality and prepared the dataset for further preprocessing and modeling.
+Punctuation and Special Character Removal: Cleaning text by eliminating unnecessary symbols.
+Tokenization: Splitting customer reviews into individual words.
+Stopword Removal: Removing common words that do not provide meaningful insights.
+Lemmatization: Converting words to their root form for consistency.
+
+This step was crucial for optimizing the data for sentiment analysis and predictive modeling using machine learning techniques.
+
+        def clean_text(text):
+          # Check if text is NaN or empty, handle it to avoid errors
+          if isinstance(text, str):
+          # Lowercase the text
+          text = text.lower()
+        
+          # Remove special characters and numbers, keeping spaces
+          text = re.sub(r'[^a-z\s]', '', text)
+        
+          # Tokenize the text into words
+          words = nltk.word_tokenize(text)
+        
+          # Remove stopwords and words with length less than 3
+          stop_words = set(stopwords.words('english'))
+          words = [word for word in words if word not in stop_words and len(word) >= 3]
+        
+          # Lemmatize each word in the list
+          lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
+        
+          # Reconstruct the cleaned text from lemmatized words
+          text = ' '.join(lemmatized_words)
+    
+        return text
+
+### 4) Filtering
+Since performing sentiment analysis on 1 million reviews across 800 products is too generic, I have implemented ipywidgets to allow users to filter results by Product ID. Once a specific product is selected, we can then analyze its reviews in detail.
+
+    # Create an interactive widget
+    interactive_widget = widgets.interactive(filter_reviews, product_id=product_input)
+
+    # Display the input widget
+    display(interactive_widget)
+
+### 5) Objective I - Understanding Customer Sentiment
+
+
+
+Analyze review text to identify the most common words used across all reviews.
+Determine the most frequently mentioned words in positive and negative reviews separately.
+Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
 
 
 
 
 
 
-### Data Preparation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.
 
 ### Modelling
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.
