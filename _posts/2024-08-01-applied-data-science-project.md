@@ -27,6 +27,7 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 ## Personal Objective
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/1.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/1.png">
 Objective
 
 The sentiment analysis in this project aims to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
