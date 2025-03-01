@@ -69,7 +69,8 @@ overall rating:
 
 Positive reivew (rating4 and rating 5) vs negative review (rating1, rating2, and rating3)
 
-df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
+This is <span style="color: green;">green</span> text.
+<span style="color: green;">df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')/span>
 
 <img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/3.png" alt="Description" width="400" height="300">
 
