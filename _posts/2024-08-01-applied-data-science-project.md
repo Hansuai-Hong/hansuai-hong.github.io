@@ -24,7 +24,7 @@ This project is driven by 4 key objectives, each led by a dedicated team member:
 4) Price Optimization –   
    Implement data-driven pricing models that consider demand patterns, competitor pricing, and customer willingness to pay, ensuring competitive yet profitable pricing strategies.
 
-By integrating these 4 analytical approaches, we beliee that Sephora Products can be improved to another stage in term of individual personalization, customer loyalty, and increase in business profitability.
+By integrating these 4 analytical approaches, we believe that Sephora Products can be improved to another stage in term of individual personalization, customer loyalty, and increase in business profitability.
 
 
 ## Personal Objective
@@ -70,7 +70,7 @@ After obtaining the dataset, we performed an initial Exploratory Data Analysis (
 This preliminary analysis helped ensure that the dataset was well-prepared for subsequent sentiment analysis and predictive modeling tasks.
    
 
-## 1) Exploratory Data Analysis (EDA)
+## 2) Exploratory Data Analysis (EDA)
 To perform sentiment analysis, I had identified Product ID, Rating, and Text Review as my key parameters to analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
 
 Overall Rating Distribution:
@@ -89,7 +89,7 @@ Overall Review Counts by products and zoom in to top 20 products:
 <img src="https://hansuai-hong.github.io/assets/4.png" alt="Description" width="400" height="300">  <img src="https://hansuai-hong.github.io/assets/5.png" alt="Description" width="400" height="300">
 </p>
 
-## 2) Data Cleaning
+## 3) Data Cleaning
 To ensure data accuracy and consistency, I performed the following tasks for cleaning:
 - Removing missing values (which less than 1% of total data set).
 - Removing duplicate entries to prevent redundancy in the dataset.
@@ -102,7 +102,7 @@ To ensure data accuracy and consistency, I performed the following tasks for cle
       df_reviews3 = df_reviews2[['review_text' ,'rating', 'product_id']
        
 
-## 3) Data preprocessing
+## 4) Data preprocessing
 after the data set is cleaned, I performed several preprocessing steps, including:
 
 Standardizing text formats by converting all text to lowercase for consistency.
@@ -137,7 +137,7 @@ This step was crucial for optimizing the data for sentiment analysis and predict
     
       return text
 
-## 4) Filtering  
+## 5) Filtering  
 Since performing sentiment analysis on 1 million reviews across 800 products is too generic, I have implemented ipywidgets to allow users to filter results by Product ID. Once a specific product is selected, we can then analyze its reviews in detail.
 
       # Create an interactive widget
@@ -150,7 +150,7 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
 </p>
 
 
-## 5) Objective A - Understand Customer Sentiment with Key Insights
+## 6) Objective A - Understand Customer Sentiment with Key Insights
 We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
 
     # calculate the number of occurence of each word in the entire list of words
@@ -177,7 +177,7 @@ I utilized word clouds to represent the pros and cons of Sephora products based 
 <img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="1000" height="500">
 </p>
 
-### 6) Objective B1 - Sentiment Prediction (Random Forest Model)
+## 7) Objective B1 - Sentiment Prediction (Random Forest Model)
 
 To develop an effective sentiment prediction model, I implemented a Random Forest classifier using TF-IDF for feature extraction. The key steps involved in this process are as follows:
 
@@ -238,7 +238,7 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 </p>
 
 
-### 7) Objective II - Sentiment Prediction (Recurrent Neural Network)
+## 8) Objective B2 - Sentiment Prediction (Recurrent Neural Network)
 
 To enhance sentiment prediction, I implemented a 2nd model - Recurrent Neural Network (RNN), which is well-suited for this scenario. 
 Below is the steps to create the models:
@@ -324,16 +324,16 @@ The initial accuracy is not bad (73%). However, all prediction are positive revi
 </p>
 
 
-## Summary and Future Improvements
+# Summary and Future Improvements
 Totaly 2 Objective for personal Goal for personal (Sentiment Analysis) :
-1) Objective 1 - Understand Customer Sentiment with Key Insights
+### 1) Objective 1 - Understand Customer Sentiment with Key Insights
    Summary:
    A model is inplemented succesfully using wordclouds to recognize key attributes associated with customer satisfaction and dissatisfaction for a particular   product with user input inerface.
 
    Recommendation & improvement:
    further improment can be done by not only using product ID, we can filter by brand, catagory, human attributes and etc to group the data. Also, we can filter or unfilter certain key words by human input instead of auto filter to make sure no important message has been left out.
         
-2) Objective 2 - Sentiment Prediction 
+### 2) Objective 2 - Sentiment Prediction 
   Summary:
   2 models were build. 1st modetl was based on traditional Random forest approach and 2nd model was baesd on RNN deep learning approach. both models can achieved >90% accuracy after fine tuning and improvement.
 
@@ -342,9 +342,22 @@ Totaly 2 Objective for personal Goal for personal (Sentiment Analysis) :
     
 
 
-## AI Ethics
-Discuss the potential data science ethics issues (privacy, fairness, accuracy, accountability, transparency) in your project. 
+# AI Ethics
+AI Ethical which will take into considerations for Sentiment Analysis in Sephora’s Business Development include:
 
+1) Fairness and Bias
+A fundamental ethical challenge in sentiment analysis is the risk of bias in AI models. As the dataset is unbalanced, the model may unfairly favor to certain products or customer sentiments, cause misleading insights. For example, if the majority reviews are positive, the model might struggle to identify negative feedback accurately. To address this, techniques such as dataset balancing should be used to ensure fair representation of all customer opinions. Others than data bias, we should also not unintentionally discriminate based on factors such as product categories, demographics, or review sources.
+
+2) Transparency and Explainability
+Another challenge for AI models is black boxes phenomenon. The model must enssure that the outcome and prediction are explainable and interpretable. In the case of Random Forest models, feature importance scores can highlight which words contribute most to sentiment classification. For deep learning models like RNNs, methods such as LIME (Local Interpretable Model-Agnostic Explanations) or SHAP (Shapley Additive Explanations) can help explain predictions. When presenting sentiment analysis findings, businesses must clearly communicate model accuracy, limitations, and the reliability of predictions to avoid any misleading and misunderstanding.
+
+3) Privacy and Data Protection
+Customer reviews often contain sensitive information, making privacy protection a critical ethical responsibility. When performing sentiment analysis, we should anonymize personal data to prevent the identification of individual customers been leaked out. We must also ensure compliance with data protection laws such as GDPR (General Data Protection Regulation) PDPA (Personal Data Protection Act). 
+
+4) Ethical Business Use
+The insights derived from sentiment analysis must used ethically to enhance customer experience rather than manipulate perceptions. We must avoid using AI findings to mislead consumers by exaggerating positive sentiment. Instead, businesses should leverage sentiment insights to improve product quality, refine marketing strategies, and provide better customer service. Ethical considerations should also guide marketing campaigns, ensure that the insights are used to create honest and transparent advertising not the other way round.
+
+AI models require continuous monitoring to ensure they remain accurate and ethical over time. Sentiment trends can evolve, and models trained on past data may become outdated or biased. Thus, regular performance tracking, bias audits, and model retraining will help and support in reliability. Additionally, human oversight is essential to review AI-generated insights and prevent potential misinterpretations. Businesses should establish a clear process for addressing errors in sentiment classification and ensure that AI-driven decisions are always comply to those 4 ethics mentioned above.
 
 
 ## Source Codes and Datasets
