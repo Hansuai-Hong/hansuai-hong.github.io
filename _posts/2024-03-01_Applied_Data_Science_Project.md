@@ -259,11 +259,11 @@ Below is the steps to create the models:
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.  
 2) Split into training & validation sets: split the data to 80% train data and 20% test data.  
 3) Model Architecture:    
-- Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
-- GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
-- Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
-- Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
-- Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
+- Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions.
+- GRU Layer: Processes the sequential data with update gate, reset gate, and hidden state.
+- Dropout Layer: Use to prevent overfitting.  
+- Dense Layers: The output from the GRU layer is passed through a fully connected dense layer
+- Output Layer: A final dense layer with a sigmoid activation function predicts the positive's probability
 
        # Convert text to sequences
        X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
@@ -309,7 +309,7 @@ Below is the steps to create the models:
         # Train Model
         history = model.fit(X_train, y_train, validation_data=(X_val, y_val),batch_size=batch_size, epochs=epochs, callbacks=[early_stop, reduce_lr, checkpoint])
 
-5) Callbacks function: Using early_stop and recued_Ir to reduce the number of epochs when the accuracy reach it saturated point.
+5) Callbacks function: Using early_stop and reduced_learningrate to reduce the number of epochs when the accuracy reach it saturated point.
 
        # Callbacks
        early_stop = EarlyStopping(monitor='val_loss', patience=3, min_delta=0.001, restore_best_weights=True, verbose=1)
