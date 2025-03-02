@@ -22,10 +22,13 @@ This project is driven by 4 key objectives, each led by a dedicated team member:
 
 1) Sentiment Analysis –  
    Analyze customer reviews, feedback, and social media sentiment to understand customer perceptions of Sephora’s products. This insight helps identify areas for improvement and enhance customer satisfaction.
+   
 2) Customer Segmentation and Preference Analysis –  
-   Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.  
-3) Develop a Product Recommendation System –    
-   Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.  
+   Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.
+   
+43 Develop a Product Recommendation System –    
+   Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.
+   
 4) Price Optimization –   
    Implement data-driven pricing models that consider demand patterns, competitor pricing, and customer willingness to pay, ensuring competitive yet profitable pricing strategies.
 
@@ -48,10 +51,10 @@ Determine the most frequently mentioned words in positive and negative reviews s
 Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
 
 3) Building a Sentiment Prediction Model -  
-Develop a machine learning model to predict sentiment based on customer reviews.
-two different approaches:
-      - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.
-      - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.
+Develop a machine learning model to predict sentiment based on customer reviews.  
+two different approaches:  
+      - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.  
+      - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.  
 
 These objectives aim to provide Sephora with valuable insights into customer perceptions while enabling automated sentiment classification for future reviews.
 
@@ -247,10 +250,10 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 ## 8) Objective B2 - Sentiment Prediction (Recurrent Neural Network)
 
 To enhance sentiment prediction, 2nd model - Recurrent Neural Network (RNN) was inplemented, which is well-suited for this scenario. 
-Below is the steps to create the models:
-1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.
-2) Split into training & validation sets: split the data to 80% train data and 20% test data.
-3) Model Architecture:  
+Below is the steps to create the models:  
+1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.  
+2) Split into training & validation sets: split the data to 80% train data and 20% test data.  
+3) Model Architecture:    
     a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
     b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
     c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
