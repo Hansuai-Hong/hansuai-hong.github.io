@@ -177,7 +177,7 @@ This is the most common 20words used in the particular selected product using Hb
 
 This is the most common 20words used in the particular selected product using WordCloud:
 <p align="center">  
-<img src="https://hansuai-hong.github.io/assets/9a.png" alt="Description" width="600" height="450">
+<img src="https://hansuai-hong.github.io/assets/9a.png" alt="Description" width="500" height="330">
 </p>
 
 To gain deeper insights, reviews were categorizd into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, the top 10 frequent words of particular products from positive were highlighted. Similarly, negative reviews also been pinpointed from 10 most frequent words of particular products. 
