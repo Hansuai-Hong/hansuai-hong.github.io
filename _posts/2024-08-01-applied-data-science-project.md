@@ -1,13 +1,18 @@
 ---
 layout: post
 author: HanSuai, Hong
-title: "Applied Data Science Project Documentation - "
+title: "Product Recommendation System for Sephora Online Store"
 categories: ITD214
 ---
 # Project Background 
-The beauty industry is constantly evolving, with shifting consumer preferences, emerging market trends, and increasing competition. To maintain a strong market position, Sephora Products must leverage data-driven strategies to enhance customer experience and drive business growth.
 
-This project focuses on utilizing customer insights, product performance data, and market trends for SEPHORA to gain a deeper understanding of customer behavior and industry dynamics. By analyzing purchasing patterns, customer feedback, and engagement metrics, Sephora can make informed decisions that improve product offerings, optimize marketing strategies, and refine pricing structures. A data-driven approach ensures the brand remains responsive to consumer demands while maximizing operational efficiency and profitability.
+This work is a part of a group project module from Nanyang Polytechnic Singapore's Specialist Diploma in Business & Big Data Analytics.
+- Project module : ITD214 - Applied Data Science Project
+- Group 5 : Applying Data Science to Improve/Optimize Skincare Business Model Through Customer Reviews
+
+The beauty industry is constantly evolving, with shifting consumer preferences, emerging market trends, and increasing competition. To maintain a strong market position, Sephora Products must leverage on AI strategies to enhance customer experience and drive its business growth.
+
+This project focuses on utilizing customer insights, product performance data, and market trends for SEPHORA to gain a deeper understanding of customer behavior and industry dynamics. By analyzing purchasing patterns, customer feedback, and engagement metrics, Sephora can make use of those data to improve product offerings, optimize marketing strategies, and refine pricing structures. A data-driven approach ensures the brand remains responsive to consumer demands while maximizing operational efficiency and profitability.
 <p align="center">
 <img src="https://hansuai-hong.github.io/assets/0.png" alt="Description" width="800" height="600">
 </p>
@@ -54,14 +59,14 @@ These objectives aim to provide Sephora with valuable insights into customer per
 
 # Work Accomplished
 ### 1) Data Collection (Group effort)
-As a team, we conducted thorough research to identify a suitable dataset for our analysis. After evaluating multiple sources, we selected a dataset from Kaggle that provides comprehensive insights relevant to our project objectives. 
+As a team, we conducted thorough research to identify a suitable dataset for our analysis. After evaluating multiple sources, a dataset from Kaggle was chosen that provides comprehensive insights relevant to our project objectives. 
 
 This dataset includes two key components: 
 
-Info Data - contains general product details  
+Info Data - contains general SEPHORA product details  
 Review Data - consists of five sheets of customer reviews and associated information.
 
-After obtaining the dataset, we performed an initial Exploratory Data Analysis (EDA) to gain a better understanding of its structure and quality. This process involved:
+After obtaining the dataset, an initial Exploratory Data Analysis (EDA) was generated to gain a better understanding of its structure and quality. This process involved:
 - Reviewing data distribution.
 - Identifying inconsistencies, missing values, and duplicate entries.
 - Detecting outliers.
@@ -71,7 +76,7 @@ This preliminary analysis helped ensure that the dataset was well-prepared for s
    
 
 ## 2) Exploratory Data Analysis (EDA)
-To perform sentiment analysis, I had identified Product ID, Rating, and Text Review as my key parameters to analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
+To perform sentiment analysis, a few key parameters were identified such as Product ID, Rating, and Text Review to incooperate to sentiment analysis. Before proceeding, a simple Exploratory Data Analysis (EDA) was conducted to understand the dataset's structure and distribution on the parameters which identified
 
 Overall Rating Distribution:
 <p align="center">
@@ -90,7 +95,7 @@ Overall Review Counts by products and zoom in to top 20 products:
 </p>
 
 ## 3) Data Cleaning
-To ensure data accuracy and consistency, I performed the following tasks for cleaning:
+To ensure data accuracy and consistency, the following cleaning tasks were done:
 - Removing missing values (which less than 1% of total data set).
 - Removing duplicate entries to prevent redundancy in the dataset.
 - Convert the submission time to datetime format.
@@ -103,13 +108,13 @@ To ensure data accuracy and consistency, I performed the following tasks for cle
        
 
 ## 4) Data preprocessing
-after the data set is cleaned, I performed several preprocessing steps, including:
+after cleaning, next step will be data preprocessing which include:
 
-Standardizing text formats by converting all text to lowercase for consistency.
-Punctuation and Special Character Removal: Cleaning text by eliminating unnecessary symbols.
-Tokenization: Splitting customer reviews into individual words.
-Stopword Removal: Removing common words that do not provide meaningful insights.
-Lemmatization: Converting words to their root form for consistency.
+- Standardizing text formats by converting all text to lowercase for consistency.
+- Punctuation and Special Character Removal: Cleaning text by eliminating unnecessary symbols.
+- Tokenization: Splitting customer reviews into individual words.
+- Stopword Removal: Removing common words that do not provide meaningful insights.
+- Lemmatization: Converting words to their root form for consistency.
 
 This step was crucial for optimizing the data for sentiment analysis and predictive modeling using machine learning techniques.
 
@@ -138,7 +143,7 @@ This step was crucial for optimizing the data for sentiment analysis and predict
       return text
 
 ## 5) Filtering  
-Since performing sentiment analysis on 1 million reviews across 800 products is too generic, I have implemented ipywidgets to allow users to filter results by Product ID. Once a specific product is selected, we can then analyze its reviews in detail.
+Since performing sentiment analysis on 1 million reviews across 8000 products is too generic, ipywidgets was introduced to allow filter results by Product ID. Once a specific product is selected, user then analyze its reviews in detail.
 
       # Create an interactive widget
       interactive_widget = widgets.interactive(filter_reviews, product_id=product_input)
@@ -151,7 +156,7 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
 
 
 ## 6) Objective A - Understand Customer Sentiment with Key Insights
-We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
+All reviews were analyzed on the particular sekected products to identify the most commonly used words. This helps determine recurring themes and patterns across the dataset.
 
     # calculate the number of occurence of each word in the entire list of words
     all_words_frequency = FreqDist(all_words)
@@ -170,30 +175,33 @@ This is the most common 20words used in the particular selected product using Wo
 <img src="https://hansuai-hong.github.io/assets/9.png" alt="Description" width="600" height="450">
 </p>
 
-To gain deeper insights, I categorized reviews into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, I can highlight the aspects of Sephora products that customers appreciate the most. Similarly, analyzing negative reviews allows me to pinpoint common complaints or areas where improvements may be needed.
+To gain deeper insights, reviews were categorizd into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, the top 10 frequent words of particular products from positive were highlighted. Similarly, negative reviews also been pinpointed from 10 most frequent words of particular products. Nevertheless, those frequent words appear in both postive and negative (common words) are filtered out to improve the effectiveness.
 
-I utilized word clouds to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer satisfaction and dissatisfaction. This approach helps em extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
+Word clouds were used to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer feedbacks. This approach helps to extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
 <p align="center">  
 <img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="1000" height="500">
 </p>
 
 ## 7) Objective B1 - Sentiment Prediction (Random Forest Model)
 
-To develop an effective sentiment prediction model, I implemented a Random Forest classifier using TF-IDF for feature extraction. The key steps involved in this process are as follows:
+To develop an effective sentiment prediction model, a Random Forest classifier using TF-IDF for feature extraction was inplemented. The key steps involved in this process are as follows:
 
-I applied the TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer To transform text reviews into numerical features, selecting the top 5,000 features:
+1) TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer To transform text reviews into numerical features, selecting the top 5,000 features:
 
        vectorizer_tfidf = TfidfVectorizer(max_features=5000)
        X_train_tfidf = vectorizer_tfidf.fit_transform(X_train)
        X_test_tfidf = vectorizer_tfidf.transform(X_test)
 
-To generate the model, i splited the data set (80% train / 20% test) and trained a Random Forest classifier with 100 decision trees and a fixed random state for reproducibility:
+2) data set splitting (80% train / 20% test):
+  
+       X_train, X_test, y_train, y_test = train_test_split(X_tfidf, y_balanced, test_size=0.2, random_state=42, stratify=y_balanced)
+   
+3) Random Forest classifier generation with 100 decision trees and a fixed random state for reproducibility:
 
-      X_train, X_test, y_train, y_test = train_test_split(X_tfidf, y_balanced, test_size=0.2, random_state=42, stratify=y_balanced)
-      rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
-      rf_model.fit(X_train_tfidf, y_train)
+       rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+       rf_model.fit(X_train_tfidf, y_train)
 
-The model was build and evaluated using accuracy, classification report, and a confusion matrix with visualiazation tools. also, the top 20most improtact features based on model's feature importance socred was displayed.
+The model was build and evaluated using accuracy, classification report, and a confusion matrix with visualiazation tools. also, the top 20 most important features based on model's feature importance scored was displayed.
 
       y_pred = rf_model.predict(X_test_tfidf)
       accuracy = accuracy_score(y_test, y_pred)
@@ -205,12 +213,12 @@ The model was build and evaluated using accuracy, classification report, and a c
 
 This is the initial models.
 
-However, Upon evaluating the model, I observed a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
+However, Upon evaluating the model, it was observed that a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
 
-To improve the model performance, I implemented the following adjustments:
-Balancing the dataset:  
+To improve the model performance, the following adjustments were introduced:
+a. Balancing the dataset:  
 Since positive reviews outnumbered negative reviews, I duplicated negative remarks based on statistical guidelines until both classes had an equal number of samples.
-Incresae the number of tree:   
+b. Incresae the number of tree:   
 Since number of tree is impacting the accuracy, I incerase to 200 for a better accuracy.
 
     avg_count = int((len(df_positive) + len(df_negative)) / 2)
@@ -225,8 +233,6 @@ Since number of tree is impacting the accuracy, I incerase to 200 for a better a
     # 7️Shuffle the Dataset
     filtered_balanced = filtered_balanced.sample(frac=1, random_state=42).reset_index(drop=True)
     
-Retraining the model: After balancing the dataset and increase the tree, I retrained the Random Forest classifier, which improved its ability to differentiate between positive and negative sentiment.
-
     rf_model = RandomForestClassifier(n_estimators=300, random_state=42)
     rf_model.fit(X_train, y_train)
 
@@ -240,7 +246,7 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 
 ## 8) Objective B2 - Sentiment Prediction (Recurrent Neural Network)
 
-To enhance sentiment prediction, I implemented a 2nd model - Recurrent Neural Network (RNN), which is well-suited for this scenario. 
+To enhance sentiment prediction, 2nd model - Recurrent Neural Network (RNN) was inplemented, which is well-suited for this scenario. 
 Below is the steps to create the models:
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.
 2) Split into training & validation sets
@@ -305,7 +311,7 @@ Below is the partial coding:
         checkpoint = ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True, verbose=1)
     
 
-6) The RNN model was evaluated using to see how accurate the model is working:  
+6) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
      a. Accuracy Score: To measure overall prediction performance.  
      b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.  
      c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
@@ -314,10 +320,10 @@ Below is the partial coding:
 <img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="800" height="600">
 </p>
 
-The initial accuracy is not bad (73%). However, all prediction are positive reviews. Something is not correct here. To correct the error, I did some modofication such as:
+The initial accuracy is not bad (73%). However, all prediction are positive reviews. Something is not correct here. To correct the error, modofication was done such as:
   - balanced the positive and negative reviews (same as what I did for the random forest model)  
   - Finetune parameters such as embedding_dim, lstm_units, gru_units, dropout_rate and l2_reg, vocab_size  
-  - add in  1 more Dense layer  
+  - add in extra one Dense layer  
 
 <p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/14d.png" alt="Description" width="800" height="600">
@@ -362,3 +368,5 @@ AI models require continuous monitoring to ensure they remain accurate and ethic
 
 ## Source Codes and Datasets
 
+Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews
+Github REPO :
