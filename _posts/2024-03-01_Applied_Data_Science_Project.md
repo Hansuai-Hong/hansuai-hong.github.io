@@ -10,6 +10,7 @@ categories: ITD214
 This work is a part of a group project module from Nanyang Polytechnic Singapore's Specialist Diploma in Business & Big Data Analytics.
 - Project module : ITD214 - Applied Data Science Project
 - Group 5 : Applying Data Science to Improve/Optimize Skincare Business Model Through Customer Reviews
+- Members: Hong Han Suai, Chen Yi, Bok Chia Hoi, Chen Long
 
 # Project Background
 The beauty industry is constantly evolving, with shifting consumer preferences, emerging market trends, and increasing competition. To maintain a strong market position, Sephora Products must leverage on AI strategies to enhance customer experience and drive its business growth.
@@ -55,8 +56,8 @@ Use word clouds to visually represent the pros and cons of Sephora products base
 2) Building a Sentiment Prediction Model -  
 Develop a machine learning model to predict sentiment based on customer reviews.  
 two different approaches:  
-      - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.  
-      - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.  
+- Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.  
+- Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.  
 
 These objectives aim to provide Sephora with valuable insights into customer perceptions while enabling automated sentiment classification for future reviews.
 
@@ -338,7 +339,7 @@ These refinements enhanced the model’s predictive accuracy from 73% to 95% acc
 
 
 # Summary and Future Improvements
-Totaly 2 Objective for personal Goal for personal (Sentiment Analysis) :
+Total 2 Objectives has achieved for personal Goal (Sentiment Analysis) :
 
 #### 1) Objective 1 - Understand Customer Sentiment with Key Insights
 Summary:  
@@ -353,7 +354,7 @@ Summary:
 2 models were build. 1st model was based on traditional Random forest approach and 2nd model was baesd on RNN deep learning approach. both models can achieved >90% accuracy after fine tuning and improvement.
 
 Recommendation & improvement:  
-Further improvemetn can be done as using the predictive result to replace current data set which rating and is_recommended is empty. Also, the coding can be further improved by adding in the new data set to existing data set to retrain to achieve self learning and self improvemnt to imporve the accuracy.
+Further improvement can be done as using the predictive result to replace current data set which rating and is_recommended is null. Also, the model can be further improved by adding in any new data sets into existing data set to achieve self learning and self improvemnt to achieve higher accuracy.
     
 
 # AI Ethics
