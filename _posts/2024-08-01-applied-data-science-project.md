@@ -140,7 +140,7 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
       # Display the input widget
       display(interactive_widget)
       
-<img src="https://hansuai-hong.github.io/assets/7.png" alt="Description" width="400" height="100">
+<img src="https://hansuai-hong.github.io/assets/7.png" alt="Description" width="200" height="50">
 
 ### 5) Objective I - Understanding Customer Sentiment with Key Insights
 We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
