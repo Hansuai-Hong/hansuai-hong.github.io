@@ -158,13 +158,13 @@ Since performing sentiment analysis on 1 million reviews across 8000 products is
 ## 6) Objective A - Understand Customer Sentiment with Key Insights
 All reviews were analyzed on the particular sekected products to identify the most commonly used words. This helps determine recurring themes and patterns across the dataset.
 
-    # calculate the number of occurence of each word in the entire list of words
-    all_words_frequency = FreqDist(all_words)
-    print (all_words_frequency)
+      # calculate the number of occurence of each word in the entire list of words
+      all_words_frequency = FreqDist(all_words)
+      print (all_words_frequency)
 
-    # print 10 most frequently occurring words
-    print ("\nTop 20 most frequently occurring words")
-    print (all_words_frequency.most_common(20))
+      # print 10 most frequently occurring words
+      print ("\nTop 20 most frequently occurring words")
+      print (all_words_frequency.most_common(20))
 This is the most common 20words used in the particular selected product using Hbar:
 <p align="center">  
 <img src="https://hansuai-hong.github.io/assets/6.png" alt="Description" width="450" height="320">
@@ -221,20 +221,20 @@ Since positive reviews outnumbered negative reviews, I duplicated negative remar
 b. Incresae the number of tree:   
 Since number of tree is impacting the accuracy, I incerase to 200 for a better accuracy.
 
-    avg_count = int((len(df_positive) + len(df_negative)) / 2)
+      avg_count = int((len(df_positive) + len(df_negative)) / 2)
 
-    # 5️Resample Both Classes to Match the Average Count (Only if needed)
-    df_positive_balanced = resample(df_positive, replace=True, n_samples=avg_count, random_state=42)
-    df_negative_balanced = resample(df_negative, replace=True, n_samples=avg_count, random_state=42)
+      # 5️Resample Both Classes to Match the Average Count (Only if needed)
+      df_positive_balanced = resample(df_positive, replace=True, n_samples=avg_count, random_state=42)
+      df_negative_balanced = resample(df_negative, replace=True, n_samples=avg_count, random_state=42)
 
-    # 6️Combine the Balanced Dataset
-    filtered_balanced = pd.concat([df_positive_balanced, df_negative_balanced])
+      # 6️Combine the Balanced Dataset
+      filtered_balanced = pd.concat([df_positive_balanced, df_negative_balanced])
 
-    # 7️Shuffle the Dataset
-    filtered_balanced = filtered_balanced.sample(frac=1, random_state=42).reset_index(drop=True)
+      # 7️Shuffle the Dataset
+      filtered_balanced = filtered_balanced.sample(frac=1, random_state=42).reset_index(drop=True)
     
-    rf_model = RandomForestClassifier(n_estimators=300, random_state=42)
-    rf_model.fit(X_train, y_train)
+      rf_model = RandomForestClassifier(n_estimators=300, random_state=42)
+      rf_model.fit(X_train, y_train)
 
 These refinements enhanced the model’s predictive accuracy and reduced misclassification of negative reviews as positive.
 the final results shows 95% accuracy which it can be used for predictive on future reviews.
@@ -255,44 +255,42 @@ Below is the steps to create the models:
     b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
     c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
     d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
-    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.  
+    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
 
-Below is the partial coding:
+       # Convert text to sequences
+       X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
 
-    # Convert text to sequences
-    X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
+       # Pad sequences
+       max_length = 100  # Fixed max length
+       X_padded = pad_sequences(X_sequences, maxlen=max_length, padding='post', truncating='post')
 
-    # Pad sequences
-    max_length = 100  # Fixed max length
-    X_padded = pad_sequences(X_sequences, maxlen=max_length, padding='post', truncating='post')
+       # Convert labels to numpy array
+       y = np.array(filtered_final['sentiment'])
 
-    # Convert labels to numpy array
-    y = np.array(filtered_final['sentiment'])
+       # Split into training & validation sets
+       X_train, X_val, y_train, y_val = train_test_split(X_padded, y, test_size=0.2, random_state=42)
 
-    # Split into training & validation sets
-    X_train, X_val, y_train, y_val = train_test_split(X_padded, y, test_size=0.2, random_state=42)
+       # Model Hyperparameters
+       embedding_dim = 100
+       lstm_units = 128
+       gru_units = 64
+       dropout_rate = 0.5
+       l2_reg = 0.01
+       batch_size = 64
+       epochs = 20
+       vocab_size = 10000  # Same as tokenizer's num_words
 
-    # Model Hyperparameters
-    embedding_dim = 100
-    lstm_units = 128
-    gru_units = 64
-    dropout_rate = 0.5
-    l2_reg = 0.01
-    batch_size = 64
-    epochs = 20
-    vocab_size = 10000  # Same as tokenizer's num_words
-
-    # Model Architecture
-    model = Sequential([
-    Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_length, trainable=True),
-    Bidirectional(LSTM(lstm_units, return_sequences=True, kernel_regularizer=l2(l2_reg))),
-    GRU(gru_units, return_sequences=False, kernel_regularizer=l2(l2_reg)),
-    Dropout(dropout_rate),
-    Dense(64, activation='relu', kernel_regularizer=l2(l2_reg)),
-    Dense(1, activation='sigmoid')
-    ])
+       # Model Architecture
+       model = Sequential([
+       Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_length, trainable=True),
+       Bidirectional(LSTM(lstm_units, return_sequences=True, kernel_regularizer=l2(l2_reg))),
+       GRU(gru_units, return_sequences=False, kernel_regularizer=l2(l2_reg)),
+       Dropout(dropout_rate),
+       Dense(64, activation='relu', kernel_regularizer=l2(l2_reg)),
+       Dense(1, activation='sigmoid')
+       ])
    
-4) Training & Testing: Using categorical cross-entropy loss and an Adam optimizer to train the model. 
+5) Training & Testing: Using categorical cross-entropy loss and an Adam optimizer to train the model. 
 
         # Compile Model
         model.compile(loss='binary_crossentropy',
@@ -303,7 +301,7 @@ Below is the partial coding:
         # Train Model
         history = model.fit(X_train, y_train, validation_data=(X_val, y_val),batch_size=batch_size, epochs=epochs, callbacks=[early_stop, reduce_lr, checkpoint])
 
-5) Callbacks function: Using early_stop and recued_Ir to reduce the number of epochs when the accuracy reach it saturated point.
+6) Callbacks function: Using early_stop and recued_Ir to reduce the number of epochs when the accuracy reach it saturated point.
 
        # Callbacks
        early_stop = EarlyStopping(monitor='val_loss', patience=3, min_delta=0.001, restore_best_weights=True, verbose=1)
@@ -311,7 +309,7 @@ Below is the partial coding:
         checkpoint = ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True, verbose=1)
     
 
-6) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
+7) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
      a. Accuracy Score: To measure overall prediction performance.  
      b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.  
      c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
@@ -368,7 +366,5 @@ AI models require continuous monitoring to ensure they remain accurate and ethic
 
 ## Source Codes and Datasets
 
-Data set:  
-Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews  
-Source Codes:  
-Github REPO : https://github.com/Hansuai-Hong/ITD214
+Data set:  Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews  
+Source Codes a@ Github REPO : https://github.com/Hansuai-Hong/ITD214
