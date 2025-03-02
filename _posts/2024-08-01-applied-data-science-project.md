@@ -5,12 +5,13 @@ title: "Product Recommendation System for Sephora Online Store"
 categories: ITD214
 ---
 
-# Project Background 
 
+# Introduction
 This work is a part of a group project module from Nanyang Polytechnic Singapore's Specialist Diploma in Business & Big Data Analytics.
 - Project module : ITD214 - Applied Data Science Project
 - Group 5 : Applying Data Science to Improve/Optimize Skincare Business Model Through Customer Reviews
 
+# Project Background
 The beauty industry is constantly evolving, with shifting consumer preferences, emerging market trends, and increasing competition. To maintain a strong market position, Sephora Products must leverage on AI strategies to enhance customer experience and drive its business growth.
 
 This project focuses on utilizing customer insights, product performance data, and market trends for SEPHORA to gain a deeper understanding of customer behavior and industry dynamics. By analyzing purchasing patterns, customer feedback, and engagement metrics, Sephora can make use of those data to improve product offerings, optimize marketing strategies, and refine pricing structures. A data-driven approach ensures the brand remains responsive to consumer demands while maximizing operational efficiency and profitability.
@@ -51,7 +52,7 @@ Analyze review text to identify the most common words used across all reviews.
 Determine the most frequently mentioned words in positive and negative reviews separately.
 Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
 
-3) Building a Sentiment Prediction Model -  
+2) Building a Sentiment Prediction Model -  
 Develop a machine learning model to predict sentiment based on customer reviews.  
 two different approaches:  
       - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.  
