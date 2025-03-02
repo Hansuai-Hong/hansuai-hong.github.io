@@ -18,9 +18,9 @@ This project is driven by 4 key objectives, each led by a dedicated team member:
 1) Sentiment Analysis –  
    Analyze customer reviews, feedback, and social media sentiment to understand customer perceptions of Sephora’s products. This insight helps identify areas for improvement and enhance customer satisfaction.
 2) Customer Segmentation and Preference Analysis –  
-   Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.
-3) Develop a Product Recommendation System –   
-   Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.
+   Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.  
+3) Develop a Product Recommendation System –    
+   Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.  
 4) Price Optimization –   
    Implement data-driven pricing models that consider demand patterns, competitor pricing, and customer willingness to pay, ensuring competitive yet profitable pricing strategies.
 
