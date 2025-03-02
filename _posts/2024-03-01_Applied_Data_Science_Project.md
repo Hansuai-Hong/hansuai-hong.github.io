@@ -53,7 +53,7 @@ Analyze review text to identify the most common words used across all reviews. F
 - Determine the most frequently mentioned words in positive and negative reviews separately.
 - Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
 
-3) Building a Sentiment Prediction Model -  
+2) Building a Sentiment Prediction Model -  
 Develop a machine learning model to predict sentiment based on customer reviews. Two different approaches will be discussed:
 - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.  
 - Recurrent Neural Network (RNN): A deep learning model designed to capture contextual meaning from text data for more accurate sentiment prediction.  
