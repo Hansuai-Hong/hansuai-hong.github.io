@@ -26,7 +26,7 @@ This project is driven by 4 key objectives, each led by a dedicated team member:
 2) Customer Segmentation and Preference Analysis –  
    Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.
    
-43 Develop a Product Recommendation System –    
+3) Develop a Product Recommendation System –    
    Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.
    
 4) Price Optimization –   
@@ -42,7 +42,7 @@ By integrating these 4 analytical approaches, we believe that Sephora Products c
 <img src="https://hansuai-hong.github.io/assets/1.png" alt="Description" width="600" height="450">
 </p>
 
-## HanSuai, Hong : SENTIMENT ANALYSIS
+## Hong Han Suai : SENTIMENT ANALYSIS
 Aim to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
 
 1) Understanding Customer Sentiment -  
@@ -204,7 +204,7 @@ To develop an effective sentiment prediction model, a Random Forest classifier u
        rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
        rf_model.fit(X_train_tfidf, y_train)
 
-The model was build and evaluated using accuracy, classification report, and a confusion matrix with visualiazation tools. also, the top 20 most important features based on model's feature importance scored was displayed.
+4) The model was build and evaluated using accuracy, classification report, and a confusion matrix with visualiazation tools. also, the top 20 most important features based on model's feature importance scored was displayed.
 
       y_pred = rf_model.predict(X_test_tfidf)
       accuracy = accuracy_score(y_test, y_pred)
@@ -218,11 +218,11 @@ This is the initial models.
 
 However, Upon evaluating the model, it was observed that a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
 
-To improve the model performance, the following adjustments were introduced:
-a. Balancing the dataset:  
-Since positive reviews outnumbered negative reviews, I duplicated negative remarks based on statistical guidelines until both classes had an equal number of samples.
-b. Incresae the number of tree:   
-Since number of tree is impacting the accuracy, I incerase to 200 for a better accuracy.
+To improve the model performance, the following adjustments were introduced:  
+- Balancing the dataset:  
+Since positive reviews outnumbered negative reviews, negative remarks have been duplicated based on statistical guidelines until both classes had an equal number of samples.  
+- Incresae the number of tree:   
+Since number of tree is impacting the accuracy, from initial 100 trees, it is extended to 200 trees for a better accuracy.  
 
       avg_count = int((len(df_positive) + len(df_negative)) / 2)
 
@@ -251,14 +251,15 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 
 To enhance sentiment prediction, 2nd model - Recurrent Neural Network (RNN) was inplemented, which is well-suited for this scenario. 
 Below is the steps to create the models:  
+
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.  
 2) Split into training & validation sets: split the data to 80% train data and 20% test data.  
 3) Model Architecture:    
-    a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
-    b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
-    c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
-    d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
-    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
+      a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
+      b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
+      c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
+      d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
+      e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
 
        # Convert text to sequences
        X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
@@ -293,7 +294,7 @@ Below is the steps to create the models:
        Dense(1, activation='sigmoid')
        ])
    
-5) Training & Testing: Using categorical cross-entropy loss and an Adam optimizer to train the model. 
+4) Training & Testing: Using categorical cross-entropy loss and an Adam optimizer to train the model. 
 
         # Compile Model
         model.compile(loss='binary_crossentropy',
@@ -304,7 +305,7 @@ Below is the steps to create the models:
         # Train Model
         history = model.fit(X_train, y_train, validation_data=(X_val, y_val),batch_size=batch_size, epochs=epochs, callbacks=[early_stop, reduce_lr, checkpoint])
 
-6) Callbacks function: Using early_stop and recued_Ir to reduce the number of epochs when the accuracy reach it saturated point.
+5) Callbacks function: Using early_stop and recued_Ir to reduce the number of epochs when the accuracy reach it saturated point.
 
        # Callbacks
        early_stop = EarlyStopping(monitor='val_loss', patience=3, min_delta=0.001, restore_best_weights=True, verbose=1)
@@ -312,7 +313,7 @@ Below is the steps to create the models:
         checkpoint = ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True, verbose=1)
     
 
-7) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
+6) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
      a. Accuracy Score: To measure overall prediction performance.  
      b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.  
      c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
