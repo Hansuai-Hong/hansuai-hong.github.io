@@ -167,7 +167,7 @@ All reviews were analyzed on the particular sekected products to identify the mo
     print (all_words_frequency.most_common(20))
 This is the most common 20words used in the particular selected product using Hbar:
 <p align="center">  
-<img src="https://hansuai-hong.github.io/assets/6.png" alt="Description" width="480" height="350">
+<img src="https://hansuai-hong.github.io/assets/6.png" alt="Description" width="450" height="320">
   </p>
 
 This is the most common 20words used in the particular selected product using WordCloud:
