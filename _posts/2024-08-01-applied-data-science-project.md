@@ -200,8 +200,9 @@ The model was build and evaluated using accuracy, classification report, and a c
       print(f"Accuracy: {accuracy:.4f}")
       print(classification_report(y_test, y_pred))
 <p align="center"> 
-<img src="https://hansuai-hong.github.io/assets/11d.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/11d.png" alt="Description" width="800" height="600">
 </p>
+
 This is the initial models.
 
 However, Upon evaluating the model, I observed a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
@@ -233,7 +234,7 @@ These refinements enhanced the model’s predictive accuracy and reduced misclas
 the final results shows 95% accuracy which it can be used for predictive on future reviews.
 
 <p align="center"> 
-<img src="https://hansuai-hong.github.io/assets/12d.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/12d.png" alt="Description" width="800" height="600">
 </p>
 
 
@@ -310,7 +311,7 @@ Below is the partial coding:
      c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
 
 <p align="center"> 
-<img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="800" height="600">
 </p>
 
 The initial accuracy is not bad (73%). However, all prediction are positive reviews. Something is not correct here. To correct the error, I did some modofication such as:
@@ -319,7 +320,7 @@ The initial accuracy is not bad (73%). However, all prediction are positive revi
   - add in  1 more Dense layer  
 
 <p align="center"> 
-<img src="https://hansuai-hong.github.io/assets/14d.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/14d.png" alt="Description" width="800" height="600">
 </p>
 
 
