@@ -249,13 +249,13 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 To enhance sentiment prediction, 2nd model - Recurrent Neural Network (RNN) was inplemented, which is well-suited for this scenario. 
 Below is the steps to create the models:
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.
-2) Split into training & validation sets
-3) Model Architecture:
-    a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.
-    b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.
-    c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.
-    d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.
-    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
+2) Split into training & validation sets: split the data to 80% train data and 20% test data.
+3) Model Architecture:  
+    a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
+    b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
+    c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
+    d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
+    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.  
 
 Below is the partial coding:
 
@@ -341,7 +341,7 @@ Totaly 2 Objective for personal Goal for personal (Sentiment Analysis) :
         
 ### 2) Objective 2 - Sentiment Prediction 
   Summary:
-  2 models were build. 1st modetl was based on traditional Random forest approach and 2nd model was baesd on RNN deep learning approach. both models can achieved >90% accuracy after fine tuning and improvement.
+  2 models were build. 1st model was based on traditional Random forest approach and 2nd model was baesd on RNN deep learning approach. both models can achieved >90% accuracy after fine tuning and improvement.
 
    Recommendation & improvement:
    Furhter improvemetn can be done as using the predictive result to replace current data set which rating and is_recommended is empty. Also, the coding can be further improved by adding in the new data set to existing data set to retrain to achieve self learning and self improvemnt to imporve the accuracy.
@@ -368,5 +368,5 @@ AI models require continuous monitoring to ensure they remain accurate and ethic
 
 ## Source Codes and Datasets
 
-Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews
+Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews  
 Github REPO :
