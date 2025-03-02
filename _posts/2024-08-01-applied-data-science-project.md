@@ -160,7 +160,7 @@ Since performing sentiment analysis on 1 million reviews across 8000 products is
 </p>
 
 
-## 6) Objective A - Understand Customer Sentiment with Key Insights
+## 6) Objective 1 - Understand Customer Sentiment with Key Insights
 All reviews were analyzed on the particular sekected products to identify the most commonly used words. This helps determine recurring themes and patterns across the dataset.
 
       # calculate the number of occurence of each word in the entire list of words
@@ -189,7 +189,7 @@ in this model, word clouds were used to represent the pros and cons based on cus
 <img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="1000" height="500">
 </p>
 
-## 7) Objective B1 - Sentiment Prediction (Random Forest Model)
+## 7) Objective 2A - Sentiment Prediction (Random Forest Model)
 
 To develop an effective sentiment prediction model, a Random Forest classifier using TF-IDF for feature extraction was inplemented. The key steps involved in this process are as follows:
 
@@ -251,7 +251,7 @@ the final results shows 95% accuracy which it can be used for predictive on futu
 </p>
 
 
-## 8) Objective B2 - Sentiment Prediction (Recurrent Neural Network)
+## 8) Objective 2B - Sentiment Prediction (Recurrent Neural Network)
 
 To enhance sentiment prediction, 2nd model - Recurrent Neural Network (RNN) was inplemented, which is well-suited for this scenario. 
 Below is the steps to create the models:  
