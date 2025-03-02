@@ -26,7 +26,9 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 
 ## Personal Objective
+
 <img src="https://hansuai-hong.github.io/assets/1.png" alt="Description" width="400" height="300">
+
 Objective
 
 The sentiment analysis in this project aims to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
@@ -76,7 +78,7 @@ negative review (rating-1, rating-2, and rating-3)
 
 <img src="https://hansuai-hong.github.io/assets/3.png" alt="Description" width="400" height="300">
 
-Overall Review by products 7 zoom in to top 20 products:
+Overall Review vounts by products and zoom in to top 20 products:
 
 <img src="https://hansuai-hong.github.io/assets/4.png" alt="Description" width="400" height="300">  <img src="https://hansuai-hong.github.io/assets/5.png" alt="Description" width="400" height="300">
 
@@ -137,6 +139,8 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
 
       # Display the input widget
       display(interactive_widget)
+      
+<img src="https://hansuai-hong.github.io/assets/7.png" alt="Description" width="400" height="100">
 
 ### 5) Objective I - Understanding Customer Sentiment with Key Insights
 We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
@@ -150,15 +154,14 @@ We first analyze the text of all reviews to identify the most commonly used word
     print (all_words_frequency.most_common(50))
 This is the most common 50words used in the particular selected product:
 
-<img src="https://github.com/Hansuai-Hong/hansuai-hong.github.io/blob/master/assets/6.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/6.png" alt="Description" width="400" height="300">
+<img src="https://hansuai-hong.github.io/assets/9.png" alt="Description" width="400" height="300">
 
 To gain deeper insights, we categorize reviews into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, we can highlight the aspects of Sephora products that customers appreciate the most. Similarly, analyzing negative reviews allows us to pinpoint common complaints or areas where improvements may be needed.
 
-
-
 We utilize word clouds to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer satisfaction and dissatisfaction. This approach helps us extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
 
-
+<img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="400" height="300">
 
 
 ### 6) Objective II - Sentiment Prediction (Random Forest Model)
@@ -183,6 +186,8 @@ The model was evaluated using accuracy, classification report, and a confusion m
       print(f"Accuracy: {accuracy:.4f}")
       print(classification_report(y_test, y_pred))
 
+<img src="https://hansuai-hong.github.io/assets/11d.png" alt="Description" width="400" height="300">
+
 This is the initial models.
 
 However, Upon evaluating the model, I observed a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
@@ -190,10 +195,28 @@ However, Upon evaluating the model, I observed a high number of false positives�
 To improve model performance, I implemented the following adjustments:
 Balancing the dataset: Since positive reviews outnumbered negative reviews, I duplicated negative remarks based on statistical guidelines until both classes had an equal number of samples.
 Incresae the tree: Since number of tree is impacting the accuracy, I incerase to 200 for a better accuracy.
+
+    avg_count = int((len(df_positive) + len(df_negative)) / 2)
+
+    # 5️Resample Both Classes to Match the Average Count (Only if needed)
+    df_positive_balanced = resample(df_positive, replace=True, n_samples=avg_count, random_state=42)
+    df_negative_balanced = resample(df_negative, replace=True, n_samples=avg_count, random_state=42)
+
+    # 6️Combine the Balanced Dataset
+    filtered_balanced = pd.concat([df_positive_balanced, df_negative_balanced])
+
+    # 7️Shuffle the Dataset
+    filtered_balanced = filtered_balanced.sample(frac=1, random_state=42).reset_index(drop=True)
+    
 Retraining the model: After balancing the dataset and increase the tree, I retrained the Random Forest classifier, which improved its ability to differentiate between positive and negative sentiment.
+
+    rf_model = RandomForestClassifier(n_estimators=300, random_state=42)
+    rf_model.fit(X_train, y_train)
 
 These refinements enhanced the model’s predictive accuracy and reduced misclassification of negative reviews as positive.
 the final results shows 95% accuracy which it is consier a good models now.
+
+<img src="https://hansuai-hong.github.io/assets/12d.png" alt="Description" width="400" height="300">
 
 
 
@@ -202,15 +225,78 @@ the final results shows 95% accuracy which it is consier a good models now.
 To enhance sentiment prediction, I implemented a 2nd model - Recurrent Neural Network (RNN), which is well-suited for analyzing sequential text data. 
 Below is the steps to create the models:
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.
-2) # Split into training & validation sets
-Model Architecture: Implementing an RNN-based model using LSTM (Long Short-Term Memory) or GRU (Gated Recurrent Unit) layers to capture contextual meaning.
-Training & Optimization: Using categorical cross-entropy loss and an Adam optimizer to train the model.
-2. Model Evaluation
-The RNN model was evaluated using:
+2) Split into training & validation sets
+3) Model Architecture:
+    a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.
+    b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.
+    c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.
+    d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.
+    e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
 
-Accuracy Score: To measure overall prediction performance.
-Confusion Matrix: To analyze the distribution of correct and incorrect predictions.
-Loss & Accuracy Plots: To monitor training performance and detect overfitting.
+Below is the partial coding:
+
+    # Convert text to sequences
+    X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
+
+    # Pad sequences
+    max_length = 100  # Fixed max length
+    X_padded = pad_sequences(X_sequences, maxlen=max_length, padding='post', truncating='post')
+
+    # Convert labels to numpy array
+    y = np.array(filtered_final['sentiment'])
+
+    # Split into training & validation sets
+    X_train, X_val, y_train, y_val = train_test_split(X_padded, y, test_size=0.2, random_state=42)
+
+    # Model Hyperparameters
+    embedding_dim = 100
+    lstm_units = 128
+    gru_units = 64
+    dropout_rate = 0.5
+    l2_reg = 0.01
+    batch_size = 64
+    epochs = 20
+    vocab_size = 10000  # Same as tokenizer's num_words
+
+    # Model Architecture
+    model = Sequential([
+    Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_length, trainable=True),
+    Bidirectional(LSTM(lstm_units, return_sequences=True, kernel_regularizer=l2(l2_reg))),
+    GRU(gru_units, return_sequences=False, kernel_regularizer=l2(l2_reg)),
+    Dropout(dropout_rate),
+    Dense(64, activation='relu', kernel_regularizer=l2(l2_reg)),
+    Dense(1, activation='sigmoid')
+    ])
+   
+  4) Training & Testing: Using categorical cross-entropy loss and an Adam optimizer to train the model. 
+
+    # Compile Model
+    model.compile(loss='binary_crossentropy',
+              optimizer=Adam(learning_rate=0.001),
+              metrics=['accuracy'])
+
+
+    # Train Model
+    history = model.fit(X_train, y_train, validation_data=(X_val, y_val),batch_size=batch_size, epochs=epochs, callbacks=[early_stop, reduce_lr, checkpoint])
+
+5) I also inplemented some callbacks function to reduce the number of epochs when the accuracy reach it saturated point.
+
+       # Callbacks
+       early_stop = EarlyStopping(monitor='val_loss', patience=3, min_delta=0.001, restore_best_weights=True, verbose=1)
+        reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=2, min_lr=1e-6, verbose=1)
+        checkpoint = ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True, verbose=1)
+    
+
+  5) The RNN model was evaluated using to see how accurate the model is working:
+     a. Accuracy Score: To measure overall prediction performance.
+     b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.
+     c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.
+
+<img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="400" height="300">
+
+
+The initial accuracy is not bad. However, all preediction are positive review. Something is not correct. To correct the error, I did some modofication such as:
+  - balanced the positive and negative reviews (same as what I did for the random forest model)
 3. Challenges & Improvements
 Overfitting Prevention: Applied techniques such as dropout regularization and early stopping to improve generalization.
 Computational Cost: Optimized model parameters to improve training efficiency.
