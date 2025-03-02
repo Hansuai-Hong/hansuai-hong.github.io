@@ -353,16 +353,16 @@ Further improvemetn can be done as using the predictive result to replace curren
 # AI Ethics
 AI Ethical which will take into considerations for Sentiment Analysis in Sephora’s Business Development include:
 
-1) Fairness and Bias
+1) Fairness and Bias  
 A fundamental ethical challenge in sentiment analysis is the risk of bias in AI models. As the dataset is unbalanced, the model may unfairly favor to certain products or customer sentiments, cause misleading insights. For example, if the majority reviews are positive, the model might struggle to identify negative feedback accurately. To address this, techniques such as dataset balancing should be used to ensure fair representation of all customer opinions. Others than data bias, we should also not unintentionally discriminate based on factors such as product categories, demographics, or review sources.
 
-2) Transparency and Explainability
+2) Transparency and Explainability  
 Another challenge for AI models is black boxes phenomenon. The model must enssure that the outcome and prediction are explainable and interpretable. In the case of Random Forest models, feature importance scores can highlight which words contribute most to sentiment classification. For deep learning models like RNNs, methods such as LIME (Local Interpretable Model-Agnostic Explanations) or SHAP (Shapley Additive Explanations) can help explain predictions. When presenting sentiment analysis findings, businesses must clearly communicate model accuracy, limitations, and the reliability of predictions to avoid any misleading and misunderstanding.
 
-3) Privacy and Data Protection
+3) Privacy and Data Protection  
 Customer reviews often contain sensitive information, making privacy protection a critical ethical responsibility. When performing sentiment analysis, we should anonymize personal data to prevent the identification of individual customers been leaked out. We must also ensure compliance with data protection laws such as GDPR (General Data Protection Regulation) PDPA (Personal Data Protection Act). 
 
-4) Ethical Business Use
+4) Ethical Business Use  
 The insights derived from sentiment analysis must used ethically to enhance customer experience rather than manipulate perceptions. We must avoid using AI findings to mislead consumers by exaggerating positive sentiment. Instead, businesses should leverage sentiment insights to improve product quality, refine marketing strategies, and provide better customer service. Ethical considerations should also guide marketing campaigns, ensure that the insights are used to create honest and transparent advertising not the other way round.
 
 AI models require continuous monitoring to ensure they remain accurate and ethical over time. Sentiment trends can evolve, and models trained on past data may become outdated or biased. Thus, regular performance tracking, bias audits, and model retraining will help and support in reliability. Additionally, human oversight is essential to review AI-generated insights and prevent potential misinterpretations. Businesses should establish a clear process for addressing errors in sentiment classification and ensure that AI-driven decisions are always comply to those 4 ethics mentioned above.
