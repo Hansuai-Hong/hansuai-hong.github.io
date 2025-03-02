@@ -178,9 +178,11 @@ This is the most common 20words used in the particular selected product using Wo
 <img src="https://hansuai-hong.github.io/assets/9.png" alt="Description" width="600" height="450">
 </p>
 
-To gain deeper insights, reviews were categorizd into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, the top 10 frequent words of particular products from positive were highlighted. Similarly, negative reviews also been pinpointed from 10 most frequent words of particular products. Nevertheless, those frequent words appear in both postive and negative (common words) are filtered out to improve the effectiveness.
+To gain deeper insights, reviews were categorizd into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, the top 10 frequent words of particular products from positive were highlighted. Similarly, negative reviews also been pinpointed from 10 most frequent words of particular products. 
 
-Word clouds were used to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer feedbacks. This approach helps to extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
+Nevertheless, those frequent words appear in both postive and negative (common words) are filtered out to improve the sensitivity.
+
+in this model, word clouds were used to represent the pros and cons based on customer feedback to effectively visualize the findings by showcase the prominent words, making it easier to recognize. This approach helps to extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
 <p align="center">  
 <img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="1000" height="500">
 </p>
@@ -255,11 +257,11 @@ Below is the steps to create the models:
 1) Tokenization & Padding: Converting text reviews into numerical sequences and ensuring uniform input length.  
 2) Split into training & validation sets: split the data to 80% train data and 20% test data.  
 3) Model Architecture:    
-      a. Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
-      b. GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
-      c. Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
-      d. Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
-      e. Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
+- Bidirectional LSTM Layer: Captures long-range dependencies in both forward and backward directions using 128 LSTM units with L2 regularization.  
+- GRU Layer: Processes the sequential data further with 64 GRU units and L2 regularization.  
+- Dropout Layer: A dropout rate of 0.5 is applied to prevent overfitting.  
+- Dense Layers: The output from the GRU layer is passed through a fully connected dense layer with 64 neurons and ReLU activation.  
+- Output Layer: A final dense layer with a sigmoid activation function predicts the probability of a review being positive.
 
        # Convert text to sequences
        X_sequences = tokenizer.texts_to_sequences(filtered_final['cleaned_review_text'])
@@ -313,10 +315,10 @@ Below is the steps to create the models:
         checkpoint = ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True, verbose=1)
     
 
-6) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:  
-     a. Accuracy Score: To measure overall prediction performance.  
-     b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.  
-     c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
+6) The RNN model was evaluated using accuracy score, confusion matrix and loss & accuraccy plots to see how accurate the model is:
+   - Accuracy Score: To measure overall prediction performance.  
+   - Confusion Matrix: To analyze the distribution of correct and incorrect predictions.  
+   - Loss & Accuracy Plots: To monitor training performance and detect overfitting.  
 
 <p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="800" height="500">
