@@ -368,5 +368,7 @@ AI models require continuous monitoring to ensure they remain accurate and ethic
 
 ## Source Codes and Datasets
 
+Data set:  
 Data soruce file link (Kaggle) : https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews  
-Github REPO :
+Source Codes:  
+Github REPO : https://github.com/Hansuai-Hong/ITD214
