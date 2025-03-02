@@ -14,7 +14,7 @@ The beauty industry is constantly evolving, with shifting consumer preferences, 
 
 This project focuses on utilizing customer insights, product performance data, and market trends for SEPHORA to gain a deeper understanding of customer behavior and industry dynamics. By analyzing purchasing patterns, customer feedback, and engagement metrics, Sephora can make use of those data to improve product offerings, optimize marketing strategies, and refine pricing structures. A data-driven approach ensures the brand remains responsive to consumer demands while maximizing operational efficiency and profitability.
 <p align="center">
-<img src="https://hansuai-hong.github.io/assets/0.png" alt="Description" width="800" height="600">
+<img src="https://hansuai-hong.github.io/assets/0.jpg" alt="Description" width="600" height="450">
 </p>
 
 # Project Objective
