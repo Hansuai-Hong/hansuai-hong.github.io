@@ -13,13 +13,13 @@ This project focuses on utilizing customer insights, product performance data, a
 ## Group Objective
 This project is driven by 4 key objectives, each led by a dedicated team member:
 
-1) Sentiment Analysis –
+1) Sentiment Analysis –  
    Analyze customer reviews, feedback, and social media sentiment to understand customer perceptions of Sephora’s products. This insight helps identify areas for improvement and enhance customer satisfaction.
-2) Customer Segmentation and Preference Analysis –
+2) Customer Segmentation and Preference Analysis –  
    Categorize customers based on demographics, purchasing behavior, and preferences to create targeted marketing strategies and personalized experiences.
-3) Develop a Product Recommendation System –
+3) Develop a Product Recommendation System –  
    Build a recommendation engine using machine learning to suggest relevant products based on customer preferences and browsing history, enhancing user engagement and sales.
-4) Price Optimization –
+4) Price Optimization –  
    Implement data-driven pricing models that consider demand patterns, competitor pricing, and customer willingness to pay, ensuring competitive yet profitable pricing strategies.
 
 By integrating these analytical approaches, Sephora Products can improve personalization, strengthen customer loyalty, and increase business profitability.
@@ -27,18 +27,20 @@ By integrating these analytical approaches, Sephora Products can improve persona
 
 ## Personal Objective
 
-<img src="https://hansuai-hong.github.io/assets/1.png" alt="Description" width="400" height="300">
 
-Objective
+<p align="center">
+<img src="https://hansuai-hong.github.io/assets/1.png" alt="Description" width="600" height="450">
+</p>
 
-The sentiment analysis in this project aims to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
+## HanSuai, Hong : SENTIMENT ANALYSIS
+Aim to extract meaningful insights from customer reviews and develop a predictive model to classify sentiments effectively. This is achieved through two key objectives:
 
-1) Understanding Customer Sentiment
+1) Understanding Customer Sentiment -  
 Analyze review text to identify the most common words used across all reviews.
 Determine the most frequently mentioned words in positive and negative reviews separately.
 Use word clouds to visually represent the pros and cons of Sephora products based on customer feedback.
 
-2) Building a Sentiment Prediction Model
+3) Building a Sentiment Prediction Model -  
 Develop a machine learning model to predict sentiment based on customer reviews.
 two different approaches:
       - Random Forest: A traditional machine learning model that leverages decision trees to classify reviews as positive or negative.
@@ -47,12 +49,14 @@ two different approaches:
 These objectives aim to provide Sephora with valuable insights into customer perceptions while enabling automated sentiment classification for future reviews.
 
 
+
 ## Work Accomplished
-### 1) Data Collection (Grouop effort)
+### 1) Data Collection (Group effort)
 As a team, we conducted thorough research to identify a suitable dataset for our analysis. After evaluating multiple sources, we selected a dataset from Kaggle that provides comprehensive insights relevant to our project objectives. 
 
 This dataset includes two key components: 
-Info Data - which contains general product details
+
+Info Data - which contains general product details  
 Review Data - which consists of five sheets of customer reviews and associated information.
 
 After obtaining the dataset, we performed an initial Exploratory Data Analysis (EDA) to gain a better understanding of its structure and quality. This process involved:
@@ -68,20 +72,20 @@ This preliminary analysis helped ensure that the dataset was well-prepared for s
 To perform sentiment analysis, I had identified Product ID, Rating, and Text Review as my key parameters to analysis. Before proceeding, I conducted a simple Exploratory Data Analysis (EDA) to understand the dataset's structure and distribution on the parameters which identified
 
 Overall Rating Distribution:
-
+<p align="center">
 <img src="https://hansuai-hong.github.io/assets/2.png" alt="Description" width="400" height="300">
-
+</p>
 Positive reivew (rating-4 and rating-5)
 negative review (rating-1, rating-2, and rating-3)
 
       df_reviews['sentiment'] = df_reviews['rating'].apply(lambda x: 'positive' if x >= 4 else 'negative')
-
+<p align="center">
 <img src="https://hansuai-hong.github.io/assets/3.png" alt="Description" width="400" height="300">
-
+</p>
 Overall Review vounts by products and zoom in to top 20 products:
-
+<p align="center">
 <img src="https://hansuai-hong.github.io/assets/4.png" alt="Description" width="400" height="300">  <img src="https://hansuai-hong.github.io/assets/5.png" alt="Description" width="400" height="300">
-
+</p>
 
 ### 2) Data Cleaning
 To ensure data accuracy and consistency, I performed the following tasks for cleaning:
@@ -139,9 +143,9 @@ Since performing sentiment analysis on 1 million reviews across 800 products is 
 
       # Display the input widget
       display(interactive_widget)
-      
-<img src="https://hansuai-hong.github.io/assets/7.png" alt="Description" width="200" height="50">
-
+<p align="center">      
+<img src="https://hansuai-hong.github.io/assets/7.png" alt="Description" width="300" height="75">
+</p>
 ### 5) Objective I - Understanding Customer Sentiment with Key Insights
 We first analyze the text of all reviews to identify the most commonly used words. This helps us determine recurring themes and patterns across the dataset.
 
@@ -150,19 +154,21 @@ We first analyze the text of all reviews to identify the most commonly used word
     print (all_words_frequency)
 
     # print 10 most frequently occurring words
-    print ("\nTop 50 most frequently occurring words")
-    print (all_words_frequency.most_common(50))
-This is the most common 50words used in the particular selected product:
-
+    print ("\nTop 20 most frequently occurring words")
+    print (all_words_frequency.most_common(20))
+This is the most common 20words used in the particular selected product:
+<p align="center">  
 <img src="https://hansuai-hong.github.io/assets/6.png" alt="Description" width="400" height="300">
-<img src="https://hansuai-hong.github.io/assets/9.png" alt="Description" width="400" height="300">
-
+  </p>
+<p align="center">  
+<img src="https://hansuai-hong.github.io/assets/9.png" alt="Description" width="600" height="450">
+</p>
 To gain deeper insights, we categorize reviews into positive and negative sentiments. By isolating the most frequently mentioned words in positive reviews, we can highlight the aspects of Sephora products that customers appreciate the most. Similarly, analyzing negative reviews allows us to pinpoint common complaints or areas where improvements may be needed.
 
 We utilize word clouds to represent the pros and cons of Sephora products based on customer feedback to effectively visualize the findings. Word clouds provide an intuitive way to showcase prominent words, making it easier to recognize key attributes associated with customer satisfaction and dissatisfaction. This approach helps us extract meaningful insights from large volumes of review data, ultimately contributing to a better understanding of customer preferences and areas for product enhancement.
-
-<img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="400" height="300">
-
+<p align="center">  
+<img src="https://hansuai-hong.github.io/assets/10.png" alt="Description" width="1000" height="500">
+</p>
 
 ### 6) Objective II - Sentiment Prediction (Random Forest Model)
 
@@ -185,9 +191,9 @@ The model was evaluated using accuracy, classification report, and a confusion m
       accuracy = accuracy_score(y_test, y_pred)
       print(f"Accuracy: {accuracy:.4f}")
       print(classification_report(y_test, y_pred))
-
+<p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/11d.png" alt="Description" width="400" height="300">
-
+</p>
 This is the initial models.
 
 However, Upon evaluating the model, I observed a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
@@ -215,9 +221,9 @@ Retraining the model: After balancing the dataset and increase the tree, I retra
 
 These refinements enhanced the model’s predictive accuracy and reduced misclassification of negative reviews as positive.
 the final results shows 95% accuracy which it is consier a good models now.
-
+<p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/12d.png" alt="Description" width="400" height="300">
-
+</p>
 
 
 ### 7) Objective II - Sentiment Prediction (RECURRENT NEURAL NETWORKS)
@@ -291,9 +297,9 @@ Below is the partial coding:
      a. Accuracy Score: To measure overall prediction performance.
      b. Confusion Matrix: To analyze the distribution of correct and incorrect predictions.
      c. Loss & Accuracy Plots: To monitor training performance and detect overfitting.
-
+<p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/13d.png" alt="Description" width="400" height="300">
-
+</p>
 
 The initial accuracy is not bad. However, all preediction are positive review. Something is not correct. To correct the error, I did some modofication such as:
   - balanced the positive and negative reviews (same as what I did for the random forest model)
