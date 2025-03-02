@@ -4,17 +4,7 @@ author: HanSuai, Hong
 title: "Product Recommendation System for Sephora Online Store"
 categories: ITD214
 ---
-<style>
-    .content {
-        text-align: justify;
-        width: 80%; /* Optional: Controls content width */
-        margin: auto; /* Centers the content */
-        font-family: Arial, sans-serif;
-    }
-</style>
-<div class="content">
-    <h1>About Us</h1>
-    <p>
+
 # Project Background 
 
 This work is a part of a group project module from Nanyang Polytechnic Singapore's Specialist Diploma in Business & Big Data Analytics.
@@ -380,9 +370,6 @@ Customer reviews often contain sensitive information, making privacy protection 
 The insights derived from sentiment analysis must used ethically to enhance customer experience rather than manipulate perceptions. We must avoid using AI findings to mislead consumers by exaggerating positive sentiment. Instead, businesses should leverage sentiment insights to improve product quality, refine marketing strategies, and provide better customer service. Ethical considerations should also guide marketing campaigns, ensure that the insights are used to create honest and transparent advertising not the other way round.
 
 AI models require continuous monitoring to ensure they remain accurate and ethical over time. Sentiment trends can evolve, and models trained on past data may become outdated or biased. Thus, regular performance tracking, bias audits, and model retraining will help and support in reliability. Additionally, human oversight is essential to review AI-generated insights and prevent potential misinterpretations. Businesses should establish a clear process for addressing errors in sentiment classification and ensure that AI-driven decisions are always comply to those 4 ethics mentioned above.
-
-    </p>
-</div>
 
 ## Source Codes and Datasets
 
