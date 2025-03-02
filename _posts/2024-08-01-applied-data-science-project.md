@@ -334,22 +334,21 @@ The initial accuracy is not bad (73%). However, all prediction are positive revi
 # Summary and Future Improvements
 Totaly 2 Objective for personal Goal for personal (Sentiment Analysis) :
 
-### 1) Objective 1 - Understand Customer Sentiment with Key Insights
-  ###Summary:  
+#### 1) Objective 1 - Understand Customer Sentiment with Key Insights
+  ####Summary:  
   A model is inplemented succesfully using wordclouds to recognize key attributes associated with customer satisfaction and dissatisfaction for a particular   product with user input inerface.
 
-  ###Recommendation & improvement:  
+  ####Recommendation & improvement:  
   further improment can be done by not only using product ID, we can filter by brand, catagory, human attributes and etc to group the data. Also, we can filter or unfilter certain key words by human input instead of auto filter to make sure no important message has been left out.
 
         
-### 2) Objective 2 - Sentiment Prediction  
-  ###Summary:  
+#### 2) Objective 2 - Sentiment Prediction  
+  ####Summary:  
   2 models were build. 1st model was based on traditional Random forest approach and 2nd model was baesd on RNN deep learning approach. both models can achieved >90% accuracy after fine tuning and improvement.
 
-  ###Recommendation & improvement:  
-  Furhter improvemetn can be done as using the predictive result to replace current data set which rating and is_recommended is empty. Also, the coding can be further improved by adding in the new data set to existing data set to retrain to achieve self learning and self improvemnt to imporve the accuracy.
+  ####Recommendation & improvement:  
+  Further improvemetn can be done as using the predictive result to replace current data set which rating and is_recommended is empty. Also, the coding can be further improved by adding in the new data set to existing data set to retrain to achieve self learning and self improvemnt to imporve the accuracy.
     
-
 
 # AI Ethics
 AI Ethical which will take into considerations for Sentiment Analysis in Sephora’s Business Development include:
