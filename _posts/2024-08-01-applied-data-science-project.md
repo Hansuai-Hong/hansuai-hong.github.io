@@ -331,6 +331,7 @@ The initial accuracy is not bad (73%). However, all prediction are positive revi
   - Finetune parameters such as embedding_dim, lstm_units, gru_units, dropout_rate and l2_reg, vocab_size  
   - add in extra one Dense layer  
 
+These refinements enhanced the model’s predictive accuracy from 73% to 95% accuracy which predictive and actual resutl seen in all 4 quadrants. The model is setup properly with a good predictive result.
 <p align="center"> 
 <img src="https://hansuai-hong.github.io/assets/14d.png" alt="Description" width="800" height="500">
 </p>
