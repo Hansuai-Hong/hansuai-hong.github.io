@@ -1,6 +1,6 @@
 ---
 layout: post
-author: HanSuai, Hong
+author: HanSuai, Hong 
 title: "Product Recommendation System for Sephora Online Store"
 categories: ITD214
 ---
