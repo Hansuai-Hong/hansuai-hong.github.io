@@ -218,9 +218,9 @@ To develop an effective sentiment prediction model, a Random Forest classifier u
 <img src="https://hansuai-hong.github.io/assets/11d.png" alt="Description" width="800" height="500">
 </p>
 
-This is the initial models.
+This is the initial model.
 
-However, Upon evaluating the model, it was observed that a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
+However, Upon evaluating, it was observed that a high number of false positives—cases where the model incorrectly predicted positive sentiment when the actual sentiment was negative. This issue suggested an imbalance in the dataset, as there were significantly more positive reviews than negative ones.
 
 To improve the model performance, the following adjustments were introduced:  
 - Balancing the dataset:  
